@@ -386,8 +386,20 @@ def main():
         transform=transform,
         cache_dir="val_cache"
     )
-54rew8rfdacl56
-    # Controlla le statistiche5
+
+    # Controlla le statistiche
+    print("Training dataset stats:", train_dataset.get_stats())
+    print("Validation dataset stats:", val_dataset.get_stats())
+
+    # Inizializza e addestra il modello
+    model = AgeDetector()
+    train_model(model, train_dataset, val_dataset, num_epochs=100, batch_size=16)
+
+    # Salva il modello
+    save_model(model, 'age_detector')
+    #torch.save(model.state_dict(), 'age_detector_sd.pth')
+
+    # Esporta in TorchScript per l'inferenza ottimizzata
     model.eval()
     example = torch.rand(1, 3, 512, 512).to(device_name)
     traced_script_module = torch.jit.trace(model, example)
