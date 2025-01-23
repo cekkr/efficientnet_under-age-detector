@@ -12,7 +12,7 @@ import base64
 from tqdm import tqdm
 import time
 
-from model import *
+from model_efficient import *
 
 device_name = "mps" # or cuda
 
@@ -55,11 +55,11 @@ class DynamicAgeDataset(Dataset):
         self.clothing = [
             "casual clothes", "t-shirt and jeans", "summer dress",
             "formal attire", "sportswear", "winter coat", "school uniform",
-            "hoodie and sneakers", "shorts and tank top", "down jacket", "puffer jacket", "shiny down jacket"
+            "shorts and tank top", "down jacket", "swimming suit"
         ]
 
         self.styles = [
-            "with their parents", "with their friends", "with his granpa and grandma"
+            "with their parents", "with their friends", "alone"
         ]
 
     def generate_prompt(self, age):
@@ -362,13 +362,13 @@ def main():
 
     # Trasformazioni per le immagini
     transform = transforms.Compose([
-        transforms.Resize(512),  # Ridimensiona mantenendo l'aspect ratio
-        transforms.CenterCrop(512),  # Ritaglia al centro per ottenere un quadrato
+        transforms.Resize(600),
+        transforms.CenterCrop(600),
+        transforms.RandomHorizontalFlip(),
+        transforms.RandomAffine(degrees=10, translate=(0.1, 0.1)),
+        transforms.ColorJitter(brightness=0.2, contrast=0.2),
         transforms.ToTensor(),
-        transforms.Normalize(
-            mean=[0.485, 0.456, 0.406],  # Media ImageNet
-            std=[0.229, 0.224, 0.225]  # Deviazione standard ImageNet
-        )
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     ])
 
     # Crea i dataset
