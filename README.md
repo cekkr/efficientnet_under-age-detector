@@ -5,7 +5,7 @@ This is a really simple MobileNet v2 model trained using image generated with ra
 
 This model aims to allow the creation of Stable Diffusion images generation services with explicit contents without worrying that they may contain minors. 
 
-The model works at 512 x 512 px of resolution and it's pretty precise in the faces age recognition, but it can gives sometimes false positive results in case of an image with only a part of the body (without face) of a dressed adult. Anyway my advice is to always take the positive result as valid and try to generate the image again with a different seed a certain number of times to be safe.
+The model works at 600 x 600 px of resolution (better for EfficientNet) and it's pretty precise in the faces age recognition, but it can gives sometimes false positive results in case of an image with only a part of the body (without face) of a dressed adult. Anyway my advice is to always take the positive result as valid and try to generate the image again with a different seed a certain number of times to be safe.
 
 ## Notes
 - At the begin of train.py and eval.py there is a very lazy "device_name" where to set the type of device to use for the training or evaluation (cpu, cuda, mps etc.).
