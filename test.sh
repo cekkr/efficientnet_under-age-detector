@@ -1,0 +1,1 @@
+python3.12 eval.py model/age_detector_full.pth test_images/2b3cf0a2e576f3dfc10c9d0692583a16.png --threshold 0.5

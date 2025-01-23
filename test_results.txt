@@ -1,0 +1,750 @@
+cekkr@RMacBook-Pro mobilenet_v2_under-age-detector % python3.12 test.py
+
+Analyzing 0c9ee5d573473fe578c5616b5d2ff98e.png
+Original metadata:
+Age: 30
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.384
+Confidence: 23.1%
+
+================================================
+
+
+Analyzing d3b4d035023c0383548440a302aa51bd.png
+Original metadata:
+Age: 24
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: Yes
+Probability: 0.966
+Confidence: 93.2%
+
+================================================
+
+
+Analyzing d43c7ad248db37508e431769d6c02700.png
+Original metadata:
+Age: 19
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.004
+Confidence: 99.2%
+
+================================================
+
+
+Analyzing 42d43d1243d6bd50b7ce46b710e0687d.png
+Original metadata:
+Age: 5
+Is minor: 1.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: Yes
+Probability: 1.000
+Confidence: 99.9%
+
+================================================
+
+
+Analyzing 91e1bc2e544bfe7cd5fb235f0565f220.png
+Original metadata:
+Age: 9
+Is minor: 1.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: Yes
+Probability: 1.000
+Confidence: 100.0%
+
+================================================
+
+
+Analyzing 73d11b946f713ab53e601bfaaa18638e.png
+Original metadata:
+Age: 19
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.053
+Confidence: 89.4%
+
+================================================
+
+
+Analyzing 6458dd03661857550f878eff6d48ade3.png
+Original metadata:
+Age: 24
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.001
+Confidence: 99.8%
+
+================================================
+
+
+Analyzing a0b071351497bfc8b44fa1bed04cc1c9.png
+Original metadata:
+Age: 13
+Is minor: 0.8333333333333334
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.220
+Confidence: 56.0%
+
+================================================
+
+
+Analyzing e7f328d4717768d54ef6c7cd45b1b398.png
+Original metadata:
+Age: 27
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.001
+Confidence: 99.7%
+
+================================================
+
+
+Analyzing c185019c7b4f5a704f2f3e67870dadd3.png
+Original metadata:
+Age: 26
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.071
+Confidence: 85.7%
+
+================================================
+
+
+Analyzing 77a7e14a58bdaf77786c0b78fe349124.png
+Original metadata:
+Age: 25
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.006
+Confidence: 98.9%
+
+================================================
+
+
+Analyzing 2cd7d0d90691532478ffbd6f61f33b74.png
+Original metadata:
+Age: 20
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.000
+Confidence: 99.9%
+
+================================================
+
+
+Analyzing dfa29a937372e0fa19ecf3e9c4b6e450.png
+Original metadata:
+Age: 2
+Is minor: 1.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.038
+Confidence: 92.3%
+
+================================================
+
+
+Analyzing a8de7063a1e9711a92405dd554bc1ee0.png
+Original metadata:
+Age: 17
+Is minor: 0.16666666666666663
+
+Model evaluation:
+
+Analysis result:
+It's underage: Yes
+Probability: 0.678
+Confidence: 35.6%
+
+================================================
+
+
+Analyzing ee167f44374d8eb967faba86b01c5d98.png
+Original metadata:
+Age: 29
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.010
+Confidence: 98.0%
+
+================================================
+
+
+Analyzing 5dfa91a0749021a66dbe9fa28016ffa4.png
+Original metadata:
+Age: 7
+Is minor: 1.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: Yes
+Probability: 0.955
+Confidence: 91.0%
+
+================================================
+
+
+Analyzing 3b38bd3bf8470e090726cd1b743454cf.png
+Original metadata:
+Age: 20
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.206
+Confidence: 58.8%
+
+================================================
+
+
+Analyzing 73f1249ab9d7556fde90257d413cc9aa.png
+Original metadata:
+Age: 24
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.000
+Confidence: 100.0%
+
+================================================
+
+
+Analyzing 129d2a834db1cc0a82c88d7582705274.png
+Original metadata:
+Age: 30
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: Yes
+Probability: 0.945
+Confidence: 89.0%
+
+================================================
+
+
+Analyzing 6cacfd830daef1eba72485497d9e232c.png
+Original metadata:
+Age: 12
+Is minor: 1.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.050
+Confidence: 90.1%
+
+================================================
+
+
+Analyzing 23948453fb48fc3805c8ce1d4699175d.png
+Original metadata:
+Age: 9
+Is minor: 1.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: Yes
+Probability: 0.999
+Confidence: 99.8%
+
+================================================
+
+
+Analyzing 7731fef553b2a61519132ffc379344dc.png
+Original metadata:
+Age: 28
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: Yes
+Probability: 0.569
+Confidence: 13.8%
+
+================================================
+
+
+Analyzing 12fe443c51236a7fe391f953387a5c13.png
+Original metadata:
+Age: 10
+Is minor: 1.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: Yes
+Probability: 1.000
+Confidence: 100.0%
+
+================================================
+
+
+Analyzing 2a52e68c25f3f95463f2716f33186f83.png
+Original metadata:
+Age: 1
+Is minor: 1.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: Yes
+Probability: 1.000
+Confidence: 100.0%
+
+================================================
+
+
+Analyzing 1924844b44e76c24786be75976f94d19.png
+Original metadata:
+Age: 3
+Is minor: 1.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: Yes
+Probability: 1.000
+Confidence: 100.0%
+
+================================================
+
+
+Analyzing 977bfb7f9435fe7916f1c286fe819fa7.png
+Original metadata:
+Age: 14
+Is minor: 0.6666666666666667
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.034
+Confidence: 93.1%
+
+================================================
+
+
+Analyzing a7d82bbaf74a3edc59cd4ec9f02f3bab.png
+Original metadata:
+Age: 17
+Is minor: 0.16666666666666663
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.002
+Confidence: 99.5%
+
+================================================
+
+
+Analyzing b29745c03605852af3f9f6d195862a13.png
+Original metadata:
+Age: 24
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: Yes
+Probability: 0.532
+Confidence: 6.4%
+
+================================================
+
+
+Analyzing 0e9ffcc67346388e924120498655e293.png
+Original metadata:
+Age: 25
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.051
+Confidence: 89.8%
+
+================================================
+
+
+Analyzing 9e1b6032dd7f7f4bd700d1484bb5a1bf.png
+Original metadata:
+Age: 13
+Is minor: 0.8333333333333334
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.115
+Confidence: 77.1%
+
+================================================
+
+
+Analyzing 7d249d088693e6c7fdf8e2e9ffd884d5.png
+Original metadata:
+Age: 5
+Is minor: 1.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: Yes
+Probability: 1.000
+Confidence: 100.0%
+
+================================================
+
+
+Analyzing 208deb8444ac909343c4a77bc8dcd7dd.png
+Original metadata:
+Age: 19
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.024
+Confidence: 95.2%
+
+================================================
+
+
+Analyzing 0490417484bbfd4e7605cd1fc6dacafd.png
+Original metadata:
+Age: 30
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.002
+Confidence: 99.6%
+
+================================================
+
+
+Analyzing e82b47a4f802ad382b31e5fe53232c27.png
+Original metadata:
+Age: 3
+Is minor: 1.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: Yes
+Probability: 0.911
+Confidence: 82.3%
+
+================================================
+
+
+Analyzing 02c6fd857e514215c261c9f2390c9e22.png
+Original metadata:
+Age: 19
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.096
+Confidence: 80.9%
+
+================================================
+
+
+Analyzing 0f6ece54b88e7b94f87d5f3e5e83cb62.png
+Original metadata:
+Age: 29
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: Yes
+Probability: 0.627
+Confidence: 25.4%
+
+================================================
+
+
+Analyzing 63550d733a0645d270f0088697238209.png
+Original metadata:
+Age: 20
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: Yes
+Probability: 0.673
+Confidence: 34.6%
+
+================================================
+
+
+Analyzing 301656dfb9c1284847f1adef85ec991a.png
+Original metadata:
+Age: 5
+Is minor: 1.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: Yes
+Probability: 1.000
+Confidence: 100.0%
+
+================================================
+
+
+Analyzing 43528cd26dcb9bc07f573541a6964870.png
+Original metadata:
+Age: 6
+Is minor: 1.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: Yes
+Probability: 0.961
+Confidence: 92.2%
+
+================================================
+
+
+Analyzing 1ffedd6bf2e9f64f63b4c15b2bdc5189.png
+Original metadata:
+Age: 10
+Is minor: 1.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: Yes
+Probability: 0.949
+Confidence: 89.7%
+
+================================================
+
+
+Analyzing 20d29d8fc574ac52d1639aedd74c015d.png
+Original metadata:
+Age: 30
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.264
+Confidence: 47.2%
+
+================================================
+
+
+Analyzing 41fee7acd4c743cea8f862df0909f4ec.png
+Original metadata:
+Age: 25
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.000
+Confidence: 99.9%
+
+================================================
+
+
+Analyzing b74f2054bc60e7cf5afe8dc1d09ce35d.png
+Original metadata:
+Age: 8
+Is minor: 1.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: Yes
+Probability: 0.667
+Confidence: 33.4%
+
+================================================
+
+
+Analyzing 38992a7580e6112dd96bc336cf7b109e.png
+Original metadata:
+Age: 6
+Is minor: 1.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: Yes
+Probability: 0.994
+Confidence: 98.8%
+
+================================================
+
+
+Analyzing bb83ff47920ff927e9868af0aabd1735.png
+Original metadata:
+Age: 30
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.214
+Confidence: 57.3%
+
+================================================
+
+
+Analyzing 113fb062ab642d138aee2532c4ef6d14.png
+Original metadata:
+Age: 29
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.000
+Confidence: 100.0%
+
+================================================
+
+
+Analyzing 2a8bea9a60f71f25428ca56b0709164b.png
+Original metadata:
+Age: 7
+Is minor: 1.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.253
+Confidence: 49.4%
+
+================================================
+
+
+Analyzing 34a1df5b3e9916d933fc3d5ab1fdc7e8.png
+Original metadata:
+Age: 18
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.005
+Confidence: 99.0%
+
+================================================
+
+
+Analyzing 2b3cf0a2e576f3dfc10c9d0692583a16.png
+Original metadata:
+Age: 28
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.132
+Confidence: 73.7%
+
+================================================
+
+
+Analyzing 5c77ba906a3d5a578a5dfdf28b35af8c.png
+Original metadata:
+Age: 24
+Is minor: 0.0
+
+Model evaluation:
+
+Analysis result:
+It's underage: No
+Probability: 0.003
+Confidence: 99.5%
+
+================================================
