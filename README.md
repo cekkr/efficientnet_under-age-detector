@@ -11,7 +11,7 @@ The model works at 512 x 512 px of resolution and it's pretty precise in the fac
 - At the begin of train.py and eval.py there is a very lazy "device_name" where to set the type of device to use for the training or evaluation (cpu, cuda, mps etc.).
 - In train.py you can change the default url of SD WebUI API (by default http://127.0.0.1:7860) and you can also change the random possible prompts in base of your model specializations and "weak points".
 - The random ages of subjects are from 1 to 40 years.
-- Model trained with 1000 generated images and 100 test images. When I have enough time, I'll try to re-train the model with 2000 images. <b>75% accuracy on test images</b>.
+- Model trained with 1000 generated images and 100 test images. When I have enough time, I'll try to re-train the model with 2000 images. <b>80% accuracy on test images</b>.
 
 # Test image examples
 
