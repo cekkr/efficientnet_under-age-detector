@@ -59,7 +59,7 @@ class DynamicAgeDataset(Dataset):
         ]
 
         self.styles = [
-            "with their parents", "with their friends", "alone"
+            "with his parents", "with his friends", "alone"
         ]
 
     def generate_prompt(self, age):
@@ -146,8 +146,7 @@ class DynamicAgeDataset(Dataset):
         self.clothing = [
             "casual clothes", "t-shirt and jeans", "summer dress",
             "formal attire", "sportswear", "winter coat", "school uniform",
-            "hoodie and sneakers", "shorts and tank top", "down jacket",
-            "puffer jacket", "shiny down jacket"
+            "down jacket", "swimming suit"
         ]
 
         self.styles = [
@@ -375,14 +374,14 @@ def main():
     # Usa il caching
     train_dataset = DynamicAgeDataset(
         sd_api,
-        samples_per_epoch=1000,
+        samples_per_epoch=1500,
         transform=transform,
         cache_dir="train_cache"
     )
 
     val_dataset = DynamicAgeDataset(
         sd_api,
-        samples_per_epoch=100,
+        samples_per_epoch=200,
         transform=transform,
         cache_dir="val_cache"
     )
@@ -396,7 +395,7 @@ def main():
     train_model(model, train_dataset, val_dataset, num_epochs=100, batch_size=16)
 
     # Salva il modello
-    save_model(model, 'age_detector')
+    save_model(model, 'model/age_detector')
     #torch.save(model.state_dict(), 'age_detector_sd.pth')
 
     # Esporta in TorchScript per l'inferenza ottimizzata
