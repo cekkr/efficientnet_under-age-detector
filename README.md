@@ -154,7 +154,10 @@ The model works at 600 x 600 px of resolution (better for EfficientNet) and it's
 			Probability: 0.596<br>
 			Confidence: 19.2%<br>
 			<span style="color:red; font-weight:bold;">!! FALSE POSITIVE !!</span><br>
-			<i>(Probably due to the lack of the head with which to evaluate the proportion)</i>
+			<i>
+				Probably due to the lack of the head with which to evaluate the proportion<br>
+				Anyway, the probability it's 0.59, setting a threshold to 0.7 could solve the "lack of head" issue.
+			</i>
 		</td>	
 	</tr>
 </table>
