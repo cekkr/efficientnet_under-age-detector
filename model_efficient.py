@@ -9,10 +9,10 @@ class AgeDetector(nn.Module):
         
         num_ftrs = self.efficientnet.classifier[1].in_features
         self.efficientnet.classifier = nn.Sequential(
-            nn.Linear(num_ftrs, 512),
+            nn.Linear(num_ftrs, 2048),
             nn.ReLU(),
             nn.Dropout(p=0.1),
-            nn.Linear(512, 1),
+            nn.Linear(2048, 1),
             nn.Sigmoid()
         )
 
