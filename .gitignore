@@ -1,5 +1,6 @@
 train_cache/
 val_cache/
+checkpoints/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
