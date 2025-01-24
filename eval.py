@@ -11,10 +11,13 @@ from model_efficient import *
 
 warnings.filterwarnings("ignore")
 
+device_name = "mps"
+
 class AgePredictor:
     def __init__(self, model_path):
+        global device_name
         try:
-            self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+            self.device = torch.device(device_name)
 
             # Carica il modello
             if model_path.endswith('.pth'):

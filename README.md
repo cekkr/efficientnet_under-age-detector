@@ -1,7 +1,7 @@
-# mobilenet_v2 Under Age Detector
+# EfficientNet Under Age Detector
 ### A really simple and fast mobilenet network to detect if there is at least an underage person in a generated image
 
-This is a really simple MobileNet v2 model trained using image generated with random prompts through Stable Diffusion WebUI images ([https://github.com/AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui)) that aims to recognize if is present at least an under age person in a generated image.
+This is a really simple EfficientNet model trained using image generated with random prompts through Stable Diffusion WebUI images ([https://github.com/AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui)) that aims to recognize if is present at least an under age person in a generated image.
 
 This model aims to allow the creation of Stable Diffusion images generation services with explicit contents without worrying that they may contain minors. 
 
@@ -25,8 +25,8 @@ The model works at 600 x 600 px of resolution (better for EfficientNet) and it's
 		</td>
 		<td>
 			It's underage: No<br>
-			Probability: 0.384<br>
-			Confidence: 23.1%
+			Probability: 0.002<br>
+			Confidence: 99.6%
 		</td>	
 	</tr>
 	<tr>
@@ -37,8 +37,8 @@ The model works at 600 x 600 px of resolution (better for EfficientNet) and it's
 		</td>
 		<td>
 			It's underage: Yes<br>
-			Probability: 0.949<br>
-			Confidence: 89.7%		
+			Probability: 1.000<br>
+			Confidence: 100.0%		
 		</td>	
 	</tr>
 	<tr>
@@ -49,8 +49,8 @@ The model works at 600 x 600 px of resolution (better for EfficientNet) and it's
 		</td>
 		<td>
 			It's underage: Yes<br>
-			Probability: 0.994<br>
-			Confidence: 98.8%	
+			Probability: 1.000<br>
+			Confidence: 100.0%
 		</td>	
 	</tr>
 	<tr>
@@ -61,8 +61,8 @@ The model works at 600 x 600 px of resolution (better for EfficientNet) and it's
 		</td>
 		<td>
 			It's underage: Yes<br>
-			Probability: 0.667<br>
-			Confidence: 33.4%
+			Probability: 1.000<br>
+			Confidence: 100.0%
 		</td>	
 	</tr>
 	<tr>
@@ -72,10 +72,9 @@ The model works at 600 x 600 px of resolution (better for EfficientNet) and it's
 			Is minor: 1.0		
 		</td>
 		<td>
-			It's underage: No<br>
-			Probability: 0.253<br>
-			Confidence: 49.4%<br>
-			<span style="color:red; font-weight:bold;">!! FALSE NEGATIVE !!</span>
+			It's underage: Yes<br>
+			Probability: 1.000<br>
+			Confidence: 100.0%
 		</td>	
 	</tr>
 	<tr>
@@ -86,8 +85,8 @@ The model works at 600 x 600 px of resolution (better for EfficientNet) and it's
 		</td>
 		<td>
 			It's underage: No<br>
-			Probability: 0.071<br>
-			Confidence: 85.7%
+			Probability: 0.007<br>
+			Confidence: 98.6%
 		</td>	
 	</tr>
 	<tr>
@@ -97,11 +96,9 @@ The model works at 600 x 600 px of resolution (better for EfficientNet) and it's
 			Is minor: 0.0		
 		</td>
 		<td>
-			It's underage: Yes<br>
-			Probability: 0.966<br>
-			Confidence: 93.2%<br>
-			<span style="color:red; font-weight:bold;">!! FALSE POSITIVE !!</span><br>
-			<b>This the "lack of face false positive" case.</b>
+			It's underage: No<br>
+			Probability: 0.000<br>
+			Confidence: 100.0%
 		</td>	
 	</tr>
 	<tr>
@@ -112,8 +109,8 @@ The model works at 600 x 600 px of resolution (better for EfficientNet) and it's
 		</td>
 		<td>
 			It's underage: No<br>
-			Probability: 0.004<br>
-			Confidence: 99.2%
+			Probability: 0.000<br>
+			Confidence: 99.9%
 		</td>	
 	</tr>
 	<tr>
@@ -124,8 +121,37 @@ The model works at 600 x 600 px of resolution (better for EfficientNet) and it's
 		</td>
 		<td>
 			It's underage: Yes<br>
-			Probability: 0.955<br>
-			Confidence: 91.0%<br>
+			Probability: 1.000<br>
+			Confidence: 100.0%
+		</td>	
+	</tr>
+		<tr>
+		<td><img src="https://github.com/cekkr/mobilenet_v2_under-age-detector/blob/main/test_images/dfa29a937372e0fa19ecf3e9c4b6e450.png?raw=true" style="width:256px;"/></td>
+		<td>
+			Age: 2<br>
+			Is minor: 1.0		
+		</td>
+		<td>
+			It's underage: No<br>
+			Probability: 0.110<br>
+			Confidence: 78.0%<br>
+			<span style="color:red; font-weight:bold;">!! FALSE NEGATIVE !!</span><br>
+			<i>(But it could be also due to a badly generated image)</i>
+		</td>	
+	</tr>
+	</tr>
+		<tr>
+		<td><img src="https://github.com/cekkr/mobilenet_v2_under-age-detector/blob/main/test_images/129d2a834db1cc0a82c88d7582705274.png?raw=true" style="width:256px;"/></td>
+		<td>
+			Age: 30<br>
+			Is minor: 0.0		
+		</td>
+		<td>
+			It's underage: Yes<br>
+			Probability: 0.596<br>
+			Confidence: 19.2%<br>
+			<span style="color:red; font-weight:bold;">!! FALSE POSITIVE !!</span><br>
+			<i>(Probably due to the lack of the head with which to evaluate the proportion)</i>
 		</td>	
 	</tr>
 </table>

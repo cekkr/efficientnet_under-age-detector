@@ -9,8 +9,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: No
-Probability: 0.384
-Confidence: 23.1%
+Probability: 0.002
+Confidence: 99.6%
 
 ================================================
 
@@ -23,9 +23,9 @@ Is minor: 0.0
 Model evaluation:
 
 Analysis result:
-It's underage: Yes
-Probability: 0.966
-Confidence: 93.2%
+It's underage: No
+Probability: 0.000
+Confidence: 100.0%
 
 ================================================
 
@@ -39,8 +39,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: No
-Probability: 0.004
-Confidence: 99.2%
+Probability: 0.000
+Confidence: 99.9%
 
 ================================================
 
@@ -54,8 +54,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: Yes
-Probability: 1.000
-Confidence: 99.9%
+Probability: 0.998
+Confidence: 99.5%
 
 ================================================
 
@@ -84,8 +84,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: No
-Probability: 0.053
-Confidence: 89.4%
+Probability: 0.000
+Confidence: 100.0%
 
 ================================================
 
@@ -99,8 +99,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: No
-Probability: 0.001
-Confidence: 99.8%
+Probability: 0.025
+Confidence: 95.0%
 
 ================================================
 
@@ -113,9 +113,9 @@ Is minor: 0.8333333333333334
 Model evaluation:
 
 Analysis result:
-It's underage: No
-Probability: 0.220
-Confidence: 56.0%
+It's underage: Yes
+Probability: 0.755
+Confidence: 51.0%
 
 ================================================
 
@@ -129,8 +129,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: No
-Probability: 0.001
-Confidence: 99.7%
+Probability: 0.004
+Confidence: 99.3%
 
 ================================================
 
@@ -144,8 +144,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: No
-Probability: 0.071
-Confidence: 85.7%
+Probability: 0.007
+Confidence: 98.6%
 
 ================================================
 
@@ -159,8 +159,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: No
-Probability: 0.006
-Confidence: 98.9%
+Probability: 0.000
+Confidence: 100.0%
 
 ================================================
 
@@ -175,7 +175,7 @@ Model evaluation:
 Analysis result:
 It's underage: No
 Probability: 0.000
-Confidence: 99.9%
+Confidence: 100.0%
 
 ================================================
 
@@ -189,8 +189,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: No
-Probability: 0.038
-Confidence: 92.3%
+Probability: 0.110
+Confidence: 78.0%
 
 ================================================
 
@@ -203,9 +203,9 @@ Is minor: 0.16666666666666663
 Model evaluation:
 
 Analysis result:
-It's underage: Yes
-Probability: 0.678
-Confidence: 35.6%
+It's underage: No
+Probability: 0.196
+Confidence: 60.8%
 
 ================================================
 
@@ -219,8 +219,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: No
-Probability: 0.010
-Confidence: 98.0%
+Probability: 0.000
+Confidence: 100.0%
 
 ================================================
 
@@ -234,8 +234,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: Yes
-Probability: 0.955
-Confidence: 91.0%
+Probability: 1.000
+Confidence: 100.0%
 
 ================================================
 
@@ -249,8 +249,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: No
-Probability: 0.206
-Confidence: 58.8%
+Probability: 0.186
+Confidence: 62.7%
 
 ================================================
 
@@ -279,8 +279,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: Yes
-Probability: 0.945
-Confidence: 89.0%
+Probability: 0.596
+Confidence: 19.2%
 
 ================================================
 
@@ -294,8 +294,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: No
-Probability: 0.050
-Confidence: 90.1%
+Probability: 0.001
+Confidence: 99.8%
 
 ================================================
 
@@ -309,8 +309,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: Yes
-Probability: 0.999
-Confidence: 99.8%
+Probability: 0.997
+Confidence: 99.4%
 
 ================================================
 
@@ -323,9 +323,9 @@ Is minor: 0.0
 Model evaluation:
 
 Analysis result:
-It's underage: Yes
-Probability: 0.569
-Confidence: 13.8%
+It's underage: No
+Probability: 0.281
+Confidence: 43.8%
 
 ================================================
 
@@ -383,9 +383,9 @@ Is minor: 0.6666666666666667
 Model evaluation:
 
 Analysis result:
-It's underage: No
-Probability: 0.034
-Confidence: 93.1%
+It's underage: Yes
+Probability: 0.660
+Confidence: 32.1%
 
 ================================================
 
@@ -399,8 +399,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: No
-Probability: 0.002
-Confidence: 99.5%
+Probability: 0.011
+Confidence: 97.8%
 
 ================================================
 
@@ -414,8 +414,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: Yes
-Probability: 0.532
-Confidence: 6.4%
+Probability: 0.999
+Confidence: 99.8%
 
 ================================================
 
@@ -429,8 +429,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: No
-Probability: 0.051
-Confidence: 89.8%
+Probability: 0.000
+Confidence: 100.0%
 
 ================================================
 
@@ -444,8 +444,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: No
-Probability: 0.115
-Confidence: 77.1%
+Probability: 0.000
+Confidence: 100.0%
 
 ================================================
 
@@ -474,8 +474,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: No
-Probability: 0.024
-Confidence: 95.2%
+Probability: 0.235
+Confidence: 52.9%
 
 ================================================
 
@@ -489,8 +489,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: No
-Probability: 0.002
-Confidence: 99.6%
+Probability: 0.000
+Confidence: 100.0%
 
 ================================================
 
@@ -504,8 +504,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: Yes
-Probability: 0.911
-Confidence: 82.3%
+Probability: 1.000
+Confidence: 100.0%
 
 ================================================
 
@@ -519,8 +519,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: No
-Probability: 0.096
-Confidence: 80.9%
+Probability: 0.000
+Confidence: 99.9%
 
 ================================================
 
@@ -534,8 +534,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: Yes
-Probability: 0.627
-Confidence: 25.4%
+Probability: 0.758
+Confidence: 51.5%
 
 ================================================
 
@@ -549,8 +549,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: Yes
-Probability: 0.673
-Confidence: 34.6%
+Probability: 0.670
+Confidence: 34.1%
 
 ================================================
 
@@ -579,8 +579,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: Yes
-Probability: 0.961
-Confidence: 92.2%
+Probability: 1.000
+Confidence: 100.0%
 
 ================================================
 
@@ -594,8 +594,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: Yes
-Probability: 0.949
-Confidence: 89.7%
+Probability: 1.000
+Confidence: 100.0%
 
 ================================================
 
@@ -609,8 +609,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: No
-Probability: 0.264
-Confidence: 47.2%
+Probability: 0.016
+Confidence: 96.7%
 
 ================================================
 
@@ -625,7 +625,7 @@ Model evaluation:
 Analysis result:
 It's underage: No
 Probability: 0.000
-Confidence: 99.9%
+Confidence: 100.0%
 
 ================================================
 
@@ -639,8 +639,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: Yes
-Probability: 0.667
-Confidence: 33.4%
+Probability: 1.000
+Confidence: 100.0%
 
 ================================================
 
@@ -654,8 +654,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: Yes
-Probability: 0.994
-Confidence: 98.8%
+Probability: 1.000
+Confidence: 100.0%
 
 ================================================
 
@@ -669,8 +669,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: No
-Probability: 0.214
-Confidence: 57.3%
+Probability: 0.000
+Confidence: 100.0%
 
 ================================================
 
@@ -698,9 +698,9 @@ Is minor: 1.0
 Model evaluation:
 
 Analysis result:
-It's underage: No
-Probability: 0.253
-Confidence: 49.4%
+It's underage: Yes
+Probability: 1.000
+Confidence: 100.0%
 
 ================================================
 
@@ -714,8 +714,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: No
-Probability: 0.005
-Confidence: 99.0%
+Probability: 0.424
+Confidence: 15.2%
 
 ================================================
 
@@ -729,8 +729,8 @@ Model evaluation:
 
 Analysis result:
 It's underage: No
-Probability: 0.132
-Confidence: 73.7%
+Probability: 0.000
+Confidence: 100.0%
 
 ================================================
 
@@ -744,7 +744,7 @@ Model evaluation:
 
 Analysis result:
 It's underage: No
-Probability: 0.003
-Confidence: 99.5%
+Probability: 0.000
+Confidence: 100.0%
 
 ================================================
