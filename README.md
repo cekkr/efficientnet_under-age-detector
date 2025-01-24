@@ -13,6 +13,9 @@ The model works at 600 x 600 px of resolution (better for EfficientNet) and it's
 - The random ages of subjects are from 1 to 40 years.
 - Model trained with 1000 generated images and 100 test images. When I have enough time, I'll try to re-train the model with 2000 images. <b>80% accuracy on test images</b>.
 
+### EfficientNet model efficiency graphs
+![](https://github.com/cekkr/mobilenet_v2_under-age-detector/blob/main/assets/efficient_stats.png?raw=true)
+
 # Test image examples
 
 <table>
