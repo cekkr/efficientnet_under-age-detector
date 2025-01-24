@@ -38,90 +38,45 @@ class SDWebUIAPI:
         return image
 
 
-class DynamicAgeDataset(Dataset):
-    def __init__(self, sd_api, samples_per_epoch=1000, transform=None):
-        self.sd_api = sd_api
-        self.samples_per_epoch = samples_per_epoch
-        self.transform = transform
-        self.cache = []
-
-        # Template per i prompt
-        self.locations = [
-            "in a park", "at the beach", "in a city street", "in a library",
-            "at a cafe", "in a shopping mall", "at home", "in a museum",
-            "at a restaurant", "in a garden"
-        ]
-
-        self.clothing = [
-            "casual clothes", "t-shirt and jeans", "summer dress",
-            "formal attire", "sportswear", "winter coat", "school uniform",
-            "shorts and tank top", "down jacket", "swimming suit"
-        ]
-
-        self.styles = [
-            "with his parents", "with his friends", "alone"
-        ]
-
-    def generate_prompt(self, age):
-        location = random.choice(self.locations)
-        clothing = random.choice(self.clothing)
-        style = random.choice(self.styles)
-        sex = random.choice(["male", "female"])
-
-        prompt = f"{age} year old {sex} {location}, wearing {clothing}, {style}"
-
-        # Prompt negativo standard per qualità e sicurezza
-        negative_prompt = "nsfw, nude, poorly rendered, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation"
-
-        return prompt, negative_prompt
-
-    def generate_batch(self):
-        print("Generating new batch of images...")
-        self.cache = []
-
-        for _ in tqdm(range(self.samples_per_epoch)):
-            # Genera età casuale (distribuzione uniforme tra 8 e 25)
-            age = random.randint(1, 40)
-            is_minor = 0
-            if age < 12:
-                is_minor = 1
-            elif age > 18:
-                is_minor = 0
-            else:
-                is_minor = 1-((age - 12)/6)
-
-            prompt, negative_prompt = self.generate_prompt(age)
-
-            try:
-                image = self.sd_api.generate_image(prompt, negative_prompt)
-                if self.transform:
-                    image = self.transform(image)
-
-                self.cache.append((image, is_minor))
-
-                # Attende brevemente per non sovraccaricare l'API
-                time.sleep(0.1)
-
-            except Exception as e:
-                print(f"Error generating image: {e}")
-                continue
-
-    def __len__(self):
-        return self.samples_per_epoch
-
-    def __getitem__(self, idx):
-        if len(self.cache) <= idx:
-            self.generate_batch()
-
-        image, label = self.cache[idx]
-        return image, torch.tensor(label, dtype=torch.float32)
-
 
 import os
 import json
 import hashlib
 from pathlib import Path
 
+def debug_tensor_conversion(image_path):
+    os.makedirs('debug', exist_ok=True)
+    
+    # Carica e salva originale
+    original = Image.open(image_path).convert('RGB')
+    original.save('debug/0_original.png')
+    
+    # ToTensor con controlli intermedi
+    tensor = transforms.ToTensor()(original)
+    print("Post ToTensor:", tensor.dtype, tensor.min(), tensor.max())
+    pil_check1 = transforms.ToPILImage()(tensor.clamp(0, 1))  # Clamp per sicurezza
+    pil_check1.save('debug/1_post_tensor.png')
+    
+    # Resize
+    resized_tensor = transforms.Resize(600)(tensor)
+    print("Post Resize:", resized_tensor.dtype, resized_tensor.min(), resized_tensor.max())
+    pil_check2 = transforms.ToPILImage()(resized_tensor.clamp(0, 1))
+    pil_check2.save('debug/2_post_resize.png')
+    
+    # CenterCrop
+    cropped_tensor = transforms.CenterCrop(600)(resized_tensor)
+    print("Post Crop:", cropped_tensor.dtype, cropped_tensor.min(), cropped_tensor.max())
+    pil_check3 = transforms.ToPILImage()(cropped_tensor.clamp(0, 1))
+    pil_check3.save('debug/3_post_crop.png')
+    
+    # Normalize
+    normalized = transforms.Normalize(
+        mean=[0.485, 0.456, 0.406], 
+        std=[0.229, 0.224, 0.225]
+    )(cropped_tensor)
+    print("Post Normalize:", normalized.dtype, normalized.min(), normalized.max())
+    
+    return normalized
 
 class DynamicAgeDataset(Dataset):
     def __init__(self, sd_api, samples_per_epoch=1000, transform=None, cache_dir="dataset_cache"):
@@ -256,12 +211,43 @@ class DynamicAgeDataset(Dataset):
     def __len__(self):
         return self.samples_per_epoch
 
+    '''
     def __getitem__(self, idx):
         if len(self.cache) <= idx:
             self.generate_batch()
 
         image, label = self.cache[idx]
         return image, torch.tensor(label, dtype=torch.float32)
+    '''
+
+    def __getitem__(self, idx):
+        image_path = self._get_image_path(list(self.metadata["images"].keys())[idx])
+        #debug_tensor_conversion(image_path)  # Add this line
+
+        if len(self.cache) <= idx:
+            self.generate_batch()
+
+        image_path = self._get_image_path(list(self.metadata["images"].keys())[idx])
+
+        try:
+            # Debug: salva l'immagine originale prima di qualsiasi trasformazione
+            original = Image.open(image_path).convert('RGB')
+
+            if False:
+                original.save('debug/0_pre_transform.png')
+            
+            if self.transform:
+                image = self.transform(original)
+            else:
+                image = transforms.ToTensor()(original)
+
+            is_minor = self.metadata["images"][list(self.metadata["images"].keys())[idx]]["is_minor"]
+            return image, torch.tensor(is_minor, dtype=torch.float32)
+
+        except Exception as e:
+            print(f"Error loading image {image_path}: {e}")
+            # Fallback a immagine casuale dal dataset
+            return self.__getitem__(random.randint(0, len(self) - 1))
 
     def get_stats(self):
         """Restituisce statistiche sul dataset cachato"""
@@ -276,13 +262,72 @@ class DynamicAgeDataset(Dataset):
             "cache_size_mb": sum(os.path.getsize(f) for f in self.images_dir.glob("*.png")) / (1024 * 1024)
         }
 
+
+def visualize_transform_steps(image_tensor):
+   os.makedirs('debug', exist_ok=True)
+   
+   # Step 1: Original tensor to PIL
+   original = transforms.ToPILImage()(image_tensor)
+   original.save('debug/1_original.png')
+   
+   # Step 2: Resize
+   resized = transforms.Resize(600)(original) 
+   resized.save('debug/2_resized.png')
+   
+   # Step 3: CenterCrop
+   cropped = transforms.CenterCrop(600)(resized)
+   cropped.save('debug/3_cropped.png')
+   
+   # Step 4: ToTensor
+   tensor = transforms.ToTensor()(cropped)
+   tensor_img = transforms.ToPILImage()(tensor)
+   tensor_img.save('debug/4_to_tensor.png')
+   
+   # Step 5: Normalize
+   normalized = transforms.Normalize(
+       mean=[0.485, 0.456, 0.406], 
+       std=[0.229, 0.224, 0.225]
+   )(tensor)
+   
+   # Denormalize
+   denorm = transforms.Normalize(
+       mean=[-0.485/0.229, -0.456/0.224, -0.406/0.225],
+       std=[1/0.229, 1/0.224, 1/0.225]
+   )(normalized)
+   
+   denorm_img = transforms.ToPILImage()(denorm)
+   denorm_img.save('debug/5_normalized.png')
+   
+   # Print tensor stats
+   print(f"Original tensor - Min: {image_tensor.min():.3f}, Max: {image_tensor.max():.3f}")
+   print(f"Final tensor - Min: {normalized.min():.3f}, Max: {normalized.max():.3f}")
+
+def visualize_transforms(image_tensor, transformed_tensor):
+    os.makedirs('debug', exist_ok=True)
+    
+    # Per l'immagine originale
+    original_image = transforms.ToPILImage()(image_tensor)
+    original_image.save('debug/original.png')
+    
+    # Denormalizziamo prima di convertire in PIL
+    denorm = transforms.Normalize(
+        mean=[-0.485/0.229, -0.456/0.224, -0.406/0.225],
+        std=[1/0.229, 1/0.224, 1/0.225]
+    )(transformed_tensor)
+    
+    transformed_image = transforms.ToPILImage()(denorm)
+    transformed_image.save('debug/transformed.png')
+    
+    print(f"Original tensor stats - Min: {image_tensor.min():.3f}, Max: {image_tensor.max():.3f}")
+    print(f"Transformed tensor stats - Min: {transformed_tensor.min():.3f}, Max: {transformed_tensor.max():.3f}")
+
 def train_model(model, train_dataset, val_dataset, num_epochs=10, batch_size=32):
     global device_name
     device = torch.device(device_name)
     model = model.to(device)
 
     criterion = nn.BCELoss()
-    optimizer = optim.Adam(model.parameters(), lr=0.001)
+    optimizer = optim.Adam(model.parameters(), lr=0.00001)
 
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
     val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
@@ -296,7 +341,24 @@ def train_model(model, train_dataset, val_dataset, num_epochs=10, batch_size=32)
         correct = 0
         total = 0
 
-        for inputs, labels in tqdm(train_loader):
+        if False:
+            for batch_idx, (inputs, labels) in enumerate(train_loader):
+                if batch_idx == 0:  # Only for first batch
+                    visualize_transforms(inputs[0], inputs[0])
+                break
+
+        for inputs, labels in tqdm(train_loader):    
+            # Get original image from dataset
+            if False:
+                original_image = train_dataset.cache[0][0]  # Get first image
+                visualize_transforms(original_image, inputs[0])
+            
+            # Debug tensori
+            if False:
+                print(f"Input tensor range: {inputs.min():.3f} to {inputs.max():.3f}")
+                print(f"Input tensor mean: {inputs.mean():.3f}")
+                print(f"Input tensor std: {inputs.std():.3f}")
+
             inputs = inputs.to(device)
             labels = labels.to(device)
 
@@ -354,6 +416,112 @@ def save_model(model, base_path):
     scripted_model = torch.jit.script(model)
     scripted_model.save(f'{base_path}_scripted.pt')
 
+def save_checkpoint(model, optimizer, epoch, loss, accuracy, path):
+    torch.save({
+        'epoch': epoch,
+        'model_state_dict': model.state_dict(),
+        'optimizer_state_dict': optimizer.state_dict(),
+        'loss': loss,
+        'accuracy': accuracy,
+    }, path)
+
+def load_checkpoint(model, optimizer, path):
+    checkpoint = torch.load(path)
+    model.load_state_dict(checkpoint['model_state_dict'])
+    optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+    return checkpoint['epoch'], checkpoint['loss'], checkpoint['accuracy']
+
+def train_model(model, train_dataset, val_dataset, num_epochs=10, batch_size=32, checkpoint_dir='checkpoints'):
+    global device_name
+    device = torch.device(device_name)
+    model = model.to(device)
+    
+    os.makedirs(checkpoint_dir, exist_ok=True)
+    checkpoint_path = os.path.join(checkpoint_dir, 'latest_checkpoint.pt')
+    
+    criterion = nn.BCELoss()
+    optimizer = optim.Adam(model.parameters(), lr=0.0001)
+    
+    start_epoch = 0
+    if os.path.exists(checkpoint_path):
+        print("Loading checkpoint...")
+        start_epoch, last_loss, last_accuracy = load_checkpoint(model, optimizer, checkpoint_path)
+        print(f"Resuming from epoch {start_epoch}")
+    
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
+
+    for epoch in range(start_epoch, num_epochs):
+        print(f'Epoch {epoch + 1}/{num_epochs}')
+        
+        # Training loop
+        model.train()
+        running_loss = 0.0
+        correct = 0
+        total = 0
+        
+        for inputs, labels in tqdm(train_loader):
+            inputs = inputs.to(device)
+            labels = labels.to(device)
+            
+            optimizer.zero_grad()
+            outputs = model(inputs).squeeze()
+            loss = criterion(outputs, labels)
+            loss.backward()
+            optimizer.step()
+            
+            running_loss += loss.item()
+            predicted = (outputs > 0.5).float()
+            total += labels.size(0)
+            correct += (predicted == labels).sum().item()
+        
+        train_accuracy = 100 * correct / total
+        
+        # Validation loop
+        model.eval()
+        val_loss = 0.0
+        correct = 0
+        total = 0
+        
+        with torch.no_grad():
+            for inputs, labels in val_loader:
+                inputs = inputs.to(device)
+                labels = labels.to(device)
+                
+                outputs = model(inputs).squeeze()
+                loss = criterion(outputs, labels)
+                val_loss += loss.item()
+                
+                predicted = (outputs > 0.5).float()
+                total += labels.size(0)
+                correct += (predicted == labels).sum().item()
+        
+        val_accuracy = 100 * correct / total
+        
+        print(f'Training Loss: {running_loss / len(train_loader):.4f}')
+        print(f'Training Accuracy: {train_accuracy:.2f}%')
+        print(f'Validation Loss: {val_loss / len(val_loader):.4f}')
+        print(f'Validation Accuracy: {val_accuracy:.2f}%')
+        print('-' * 60)
+        
+        # Save checkpoint every 10 epochs
+        if (epoch + 1) % 10 == 0:
+            save_checkpoint(
+                model, 
+                optimizer, 
+                epoch + 1, 
+                running_loss / len(train_loader),
+                train_accuracy,
+                checkpoint_path
+            )
+            print(f"Checkpoint saved at epoch {epoch + 1}")
+        
+        # Generate new batch for next epoch
+        train_dataset.generate_batch()
+        val_dataset.generate_batch()
+    
+    # Save final model
+    save_model(model, 'model/age_detector')
 
 def main():
     # Inizializza l'API di Stable Diffusion WebUI
@@ -364,8 +532,6 @@ def main():
         transforms.Resize(600),
         transforms.CenterCrop(600),
         transforms.RandomHorizontalFlip(),
-        transforms.RandomAffine(degrees=10, translate=(0.1, 0.1)),
-        transforms.ColorJitter(brightness=0.2, contrast=0.2),
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     ])
@@ -392,7 +558,7 @@ def main():
 
     # Inizializza e addestra il modello
     model = AgeDetector()
-    train_model(model, train_dataset, val_dataset, num_epochs=100, batch_size=16)
+    train_model(model, train_dataset, val_dataset, num_epochs=1000, batch_size=4)
 
     # Salva il modello
     save_model(model, 'model/age_detector')
@@ -402,7 +568,7 @@ def main():
     model.eval()
     example = torch.rand(1, 3, 512, 512).to(device_name)
     traced_script_module = torch.jit.trace(model, example)
-    traced_script_module.save('age_detector_sd_optimized.pt')
+    traced_script_module.save('model/age_detector_sd_optimized.pt')
 
 
 if __name__ == '__main__':

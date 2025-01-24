@@ -33,8 +33,6 @@ class AgePredictor:
                 transforms.Resize(600),
                 transforms.CenterCrop(600),
                 transforms.RandomHorizontalFlip(),
-                transforms.RandomAffine(degrees=10, translate=(0.1, 0.1)),
-                transforms.ColorJitter(brightness=0.2, contrast=0.2),
                 transforms.ToTensor(),
                 transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
             ])
