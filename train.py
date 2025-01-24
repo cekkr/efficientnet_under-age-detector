@@ -14,7 +14,8 @@ import time
 
 from model_efficient import *
 
-device_name = "mps" # or cuda
+device_name = "cuda" # or cuda
+learning_rate = 0.00001
 
 class SDWebUIAPI:
     def __init__(self, url="http://127.0.0.1:7860"):
@@ -432,6 +433,8 @@ def load_checkpoint(model, optimizer, path):
 
 def train_model(model, train_dataset, val_dataset, num_epochs=10, batch_size=32, checkpoint_dir='checkpoints'):
     global device_name
+    global learning_rate
+
     device = torch.device(device_name)
     model = model.to(device)
     
@@ -439,7 +442,7 @@ def train_model(model, train_dataset, val_dataset, num_epochs=10, batch_size=32,
     checkpoint_path = os.path.join(checkpoint_dir, 'latest_checkpoint.pt')
     
     criterion = nn.BCELoss()
-    optimizer = optim.Adam(model.parameters(), lr=0.0001)
+    optimizer = optim.Adam(model.parameters(), lr=learning_rate)
     
     start_epoch = 0
     if os.path.exists(checkpoint_path):
@@ -557,7 +560,7 @@ def main():
 
     # Inizializza e addestra il modello
     model = AgeDetector()
-    train_model(model, train_dataset, val_dataset, num_epochs=1000, batch_size=4)
+    train_model(model, train_dataset, val_dataset, num_epochs=1000, batch_size=8)
 
     # Salva il modello
     save_model(model, 'model/age_detector')
