@@ -221,13 +221,12 @@ class DynamicAgeDataset(Dataset):
     '''
 
     def __getitem__(self, idx):
-        image_path = self._get_image_path(list(self.metadata["images"].keys())[idx])
-        #debug_tensor_conversion(image_path)  # Add this line
 
         if len(self.cache) <= idx:
             self.generate_batch()
 
         image_path = self._get_image_path(list(self.metadata["images"].keys())[idx])
+        #debug_tensor_conversion(image_path)  # Add this line
 
         try:
             # Debug: salva l'immagine originale prima di qualsiasi trasformazione
@@ -540,7 +539,7 @@ def main():
     # Usa il caching
     train_dataset = DynamicAgeDataset(
         sd_api,
-        samples_per_epoch=1500,
+        samples_per_epoch=2000,
         transform=transform,
         cache_dir="train_cache"
     )
