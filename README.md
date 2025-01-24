@@ -1,5 +1,5 @@
 # EfficientNet Under Age Detector
-### A really simple and fast mobilenet network to detect if there is at least an underage person in a generated image
+### A really simple and fast EfficienNet model to detect if there is at least an underage person in a generated image
 
 This is a really simple EfficientNet model trained using image generated with random prompts through Stable Diffusion WebUI images ([https://github.com/AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui)) that aims to recognize if is present at least an under age person in a generated image.
 
