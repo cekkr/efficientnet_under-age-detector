@@ -560,7 +560,7 @@ def main():
 
     # Inizializza e addestra il modello
     model = AgeDetector()
-    train_model(model, train_dataset, val_dataset, num_epochs=1000, batch_size=8)
+    train_model(model, train_dataset, val_dataset, num_epochs=180, batch_size=8)
 
     # Salva il modello
     save_model(model, 'model/age_detector')
