@@ -1,0 +1,5 @@
+# For AMD 7600 XT
+export HSA_OVERRIDE_GFX_VERSION=11.0.0
+export PYTORCH_ROCM_ARCH=gfx1100
+
+python3.11 train.py
