@@ -12,7 +12,7 @@ The model works at 600 x 600 px of resolution (better for EfficientNet) and it's
 - In train.py you can change the default url of SD WebUI API (by default http://127.0.0.1:7860) and you can also change the random possible prompts in base of your model specializations and "weak points".
 - The random ages of subjects are from 1 to 40 years.
 - Model trained with 1000 generated images and 100 test images. When I have enough time, I'll try to re-train the model with 2000 images. At least <b>85% accuracy on test images</b>.
-- Last model trained on AMD 7600 XT
+- Last model trained on AMD 7600 XT with 180 epochs
 
 ### EfficientNet model efficiency graphs
 ![](https://github.com/cekkr/mobilenet_v2_under-age-detector/blob/main/assets/efficient_stats.png?raw=true)
