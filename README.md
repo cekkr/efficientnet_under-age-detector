@@ -7,6 +7,8 @@ This model aims to allow the creation of Stable Diffusion images generation serv
 
 The model works at 600 x 600 px of resolution (better for EfficientNet) and it's pretty precise in the faces age recognition, <b>with body only (head cutted from image) can make false positive results</b>. Setting the threshold to 0.7 could solve the issue.
 
+In case of positive result, could be a good idea regenerate the image with a different seed to be sure about a false positive case or a serious malicious prompt case.
+
 ## Notes
 - At the begin of train.py and eval.py there is a very lazy "device_name" where to set the type of device to use for the training or evaluation (cpu, cuda, mps etc.).
 - In train.py you can change the default url of SD WebUI API (by default http://127.0.0.1:7860) and you can also change the random possible prompts in base of your model specializations and "weak points".
